@@ -1,4 +1,5 @@
 import Gameboard from '../src/gameboard';
+jest.mock('./src/gameboard');
 
 it('calls ship.hit when doing receiveAttack', () => {
   const ship = 

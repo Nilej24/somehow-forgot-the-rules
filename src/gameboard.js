@@ -1,28 +1,29 @@
 import Ship from './ship';
 
-function Gameboard() {
-  const ships = [];
-
-  const hits = [];
-  const misses = [];
-
-  function receiveAttack(coords) {
-    ships.forEach((ship) => ship.hit(coords));
+class Gameboard {
+  constructor() {
+    this.ships = [];
+    this.hits = [];
+    this.misses = [];
   }
 
-  function allShipsAreSunk() {
+  addShip(ship) {
+    this.ships.push(ship);
+  }
+
+  receiveAttack(coords) {
+    this.ships.forEach((ship) => ship.hit(coords));
+  }
+
+  allShipsAreSunk() {
     let result = true;
 
-    ships.forEach((ship) => {
+    this.ships.forEach((ship) => {
       if (!ship.isSunk()) result = false;
     });
 
     return result;
   }
-
-  return {
-    receiveAttack, hits, misses, ships,
-  };
 }
 
 export default Gameboard;
